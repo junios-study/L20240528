@@ -9,8 +9,13 @@ public:
 	FDeck();
 	virtual ~FDeck();
 
-	std::vector<FCard*> Cards;
-
 	void Check();
+
+	FCard* Draw();
+
+protected:
+	std::vector<FCard*> Cards;
+	int CurrentPosition;
+
 };
 
