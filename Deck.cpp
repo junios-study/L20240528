@@ -1,6 +1,7 @@
 #include "Deck.h"
 #include "Card.h"
 #include <algorithm>
+#include <random>
 
 FDeck::FDeck()
 {
@@ -35,9 +36,12 @@ FDeck::FDeck()
 		}
 	}
 
-	CurrentPosition = Cards.size() - 1;
+	CurrentPosition = (int)Cards.size() - 1;
 
-	std::random_shuffle(Cards.begin(), Cards.end());
+	//c++ 17 ·£´ýÀ¸·Î ¼¯±â
+	std::random_device RandomDevice;
+	std::shuffle(Cards.begin(), Cards.end(),
+		std::default_random_engine(RandomDevice()));
 }
 
 FDeck::~FDeck()
