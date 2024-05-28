@@ -1,4 +1,6 @@
 #pragma once
+#ifndef __PERSON_H__
+#define __PERSON_H__
 #include <vector>
 
 using namespace std;
@@ -18,4 +20,4 @@ public:
 protected:
 	vector<FCard*> Cards;
 };
-
+#endif //__PERSON_H__

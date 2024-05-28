@@ -1,44 +1,42 @@
 #include <iostream>
-#include "Deck.h"
-#include "Person.h"
-#include "Player.h"
-#include "Dealer.h"
-#include <vector>	
+#include <vector>//Data save, Container
 
 using namespace std;
 
+class Player
+{
+public:
+	__forceinline int GetMoney() { return Money; }
+
+private:
+	int Money;
+};
+
+inline int Max(int A, int B)
+{
+	return ((A > B) ? A : B);
+}
+
+//c¾ð¾î, old style
+#define MAX(A, B)			((A > B) ? A : B) ?
+
+#define MAX3(A, B, C)	 (((A>B)? A : B) > C ? ((A>B)? A : B) : C )
+
+
+
+#define DEFINE_MAX(A, B)			A + B
+
+
+#include "Player.h"
+#include "Dealer.h"
+
 int main()
 {
-	FDeck Deck;
+	int A = 1;
+	int B = DEFINE_MAX(1, 2);
 
-	vector<FPerson*> Persons;
-	Persons.push_back(new FDealer);
-	Persons.push_back(new FPlayer);
-	Persons.push_back(new FPlayer);
-	Persons.push_back(new FPlayer);
-	Persons.push_back(new FPlayer);
+	cout << MAX3(3, 5, 4) << endl;
 
-	for (int i = 0; i < Persons.size(); ++i)
-	{
-		Persons[i]->Draw(Deck.Draw());
-		Persons[i]->Draw(Deck.Draw());
-	}
-
-	for (int i = 0; i < Persons.size(); ++i)
-	{
-		if (i == 0)
-		{
-			cout << "Dealer " << " score : " << Persons[i]->Check() << endl;
-		}
-		else
-		{
-			cout << "Player " << i << " score : " << Persons[i]->Check() 
-				<< ((Persons[0]->Check() <= Persons[i]->Check()) ? " Win" : " Lost")
-				<< endl;
-		}
-		
-		Persons[i]->Show();
-	}
 
 	return  0;
 }
